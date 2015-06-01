@@ -3,7 +3,7 @@
 //  GRCoreDataUtils
 //
 //  Created by Gnatsel Reivilo on 27/05/2015.
-//  Copyright (c) 2015 Gnatsel Riveilo. All rights reserved.
+//  Copyright (c) 2015 Gnatsel Reivilo. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
