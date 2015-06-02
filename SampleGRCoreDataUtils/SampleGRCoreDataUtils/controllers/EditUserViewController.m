@@ -42,6 +42,7 @@
                                                                    }];
     }
     else{
+        
         [UserDAO userUpdatedWithDictionary:@{
                                              @"userId":_currentUser?_currentUser.userId:[[NSUUID UUID]UUIDString],
                                              @"firstname":_userPresenter.firstnameTextField.text,

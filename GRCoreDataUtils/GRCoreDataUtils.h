@@ -9,16 +9,37 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 @interface GRCoreDataUtils : NSObject
+
++(NSManagedObject *)managedObjectForEntityName:(NSString *)entityName
+                               predicateFormat:(NSString *)predicateFormat
+                          updateWithDictionary:(NSDictionary *)dictionary
+                        inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+
 +(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass
                                 predicateFormat:(NSString *)predicateFormat
                            updateWithDictionary:(NSDictionary *)dictionary
                          inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
-+(NSManagedObject *)instantiateManagedObjectForEntityName:(NSString *)entityName
-                                    withEntityDescription:(NSEntityDescription *)entityDescription
+
+
+
++(NSManagedObject *)instantiateManagedObjectWithEntityDescription:(NSEntityDescription *)entityDescription
                                            withDictionary:(NSDictionary *)dictionary
                                    inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 
+
++(NSManagedObject *)managedObjectForEntityName:(NSString *)entityName
+                               predicateFormat:(NSString *)predicateFormat
+                         managedObjectKeyPaths:(NSArray *)managedObjectKeyPathArray
+                                withDictionary:(NSDictionary *)dictionary
+                          andKeysInDictionary:(NSArray *)keysInDictionaryArray
+                        inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass
+                                predicateFormat:(NSString *)predicateFormat
+                          managedObjectKeyPaths:(NSArray *)managedObjectKeyPathArray
+                                 withDictionary:(NSDictionary *)dictionary
+                           andKeysInDictionary:(NSArray *)keysInDictionaryArray
+                         inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 +(NSArray *)managedObjectsArrayForEntityClass:(Class)entityClass  predicateFormat:(NSString *)predicateFormat inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 +(NSArray *)managedObjectsArrayForEntityName:(NSString *)entityName  predicateFormat:(NSString *)predicateFormat inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;

@@ -13,6 +13,7 @@
 +(void)deleteUser:(User *)user{
     [GRCoreDataUtils deleteManagedObject:user];
 }
+
 +(User *)userUpdatedWithDictionary:(NSDictionary *)dictionary{
     return (User *)[GRCoreDataUtils managedObjectForEntityClass:[User class]
                                         predicateFormat:[NSString stringWithFormat:@"userId = '%@'",dictionary[@"userId"]]

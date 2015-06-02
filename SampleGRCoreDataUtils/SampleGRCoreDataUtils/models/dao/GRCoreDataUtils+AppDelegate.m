@@ -11,6 +11,31 @@
 
 @implementation GRCoreDataUtils (AppDelegate)
 
++(NSManagedObject *)managedObjectForEntityName:(NSString *)entityName
+                               predicateFormat:(NSString *)predicateFormat
+                         managedObjectKeyPaths:(NSArray *)managedObjectKeyPathArray
+                                withDictionary:(NSDictionary *)dictionary
+                           andKeysInDictionary:(NSArray *)keysInDictionaryArray{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    return [GRCoreDataUtils managedObjectForEntityName:entityName
+                                       predicateFormat:predicateFormat
+                                 managedObjectKeyPaths:managedObjectKeyPathArray
+                                        withDictionary:dictionary
+                                   andKeysInDictionary:keysInDictionaryArray
+                                inManagedObjectContext:appDelegate.managedObjectContext];
+    
+}
++(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass
+                                predicateFormat:(NSString *)predicateFormat
+                          managedObjectKeyPaths:(NSArray *)managedObjectKeyPathArray
+                                 withDictionary:(NSDictionary *)dictionary
+                            andKeysInDictionary:(NSArray *)keysInDictionaryArray{
+    return [GRCoreDataUtils managedObjectForEntityName:NSStringFromClass(entityClass)
+                                       predicateFormat:predicateFormat
+                                 managedObjectKeyPaths:managedObjectKeyPathArray
+                                        withDictionary:dictionary
+                                   andKeysInDictionary:keysInDictionaryArray];
+}
 +(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass predicateFormat:(NSString *)predicateFormat updateWithDictionary:(NSDictionary *)dictionary{
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     
@@ -26,8 +51,7 @@
 
 +(NSManagedObject *)instantiateManagedObjectForEntityName:(NSString *)entityName withEntityDescription:(NSEntityDescription *)entityDescription withDictionary:(NSDictionary *)dictionary{
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-    return [GRCoreDataUtils instantiateManagedObjectForEntityName:entityName
-                                            withEntityDescription:entityDescription
+    return [GRCoreDataUtils instantiateManagedObjectWithEntityDescription:entityDescription
                                                    withDictionary:dictionary
                                            inManagedObjectContext:appDelegate.managedObjectContext];
 }

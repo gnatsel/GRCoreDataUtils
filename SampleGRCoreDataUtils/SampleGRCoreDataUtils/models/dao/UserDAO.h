@@ -11,6 +11,5 @@
 @class User;
 @interface UserDAO : GRCoreDataUtils
 +(void)deleteUser:(User *)user;
-+(User *)userUpdatedWithDictionary:(NSDictionary *)dictionary;
-+(NSFetchedResultsController *)fetchedResultsControllerWithDelegate:(id<NSFetchedResultsControllerDelegate>)delegate;
++(User *)userUpdatedKeyPathArray:(NSArray *)keyPathArray withDictionary:(NSDictionary *)dictionary andKeysInDictionary:(NSArray *)keysInDictionaryArray;+(NSFetchedResultsController *)fetchedResultsControllerWithDelegate:(id<NSFetchedResultsControllerDelegate>)delegate;
 @end

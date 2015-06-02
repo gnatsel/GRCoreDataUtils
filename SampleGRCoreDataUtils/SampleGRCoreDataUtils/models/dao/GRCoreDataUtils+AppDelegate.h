@@ -9,7 +9,16 @@
 #import "GRCoreDataUtils.h"
 
 @interface GRCoreDataUtils (AppDelegate)
-
++(NSManagedObject *)managedObjectForEntityName:(NSString *)entityName
+                               predicateFormat:(NSString *)predicateFormat
+                         managedObjectKeyPaths:(NSArray *)managedObjectKeyPathArray
+                                withDictionary:(NSDictionary *)dictionary
+                           andKeysInDictionary:(NSArray *)keysInDictionaryArray;
++(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass
+                                predicateFormat:(NSString *)predicateFormat
+                          managedObjectKeyPaths:(NSArray *)managedObjectKeyPathArray
+                                 withDictionary:(NSDictionary *)dictionary
+                            andKeysInDictionary:(NSArray *)keysInDictionaryArray;
 +(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass predicateFormat:(NSString *)predicateFormat updateWithDictionary:(NSDictionary *)dictionary;
 +(NSManagedObject *)instantiateManagedObjectForEntityClass:(Class)entityClass withEntityDescription:(NSEntityDescription *)entityDescription withDictionary:(NSDictionary *)dictionary;
 +(NSManagedObject *)instantiateManagedObjectForEntityName:(NSString *)entityName withEntityDescription:(NSEntityDescription *)entityDescription withDictionary:(NSDictionary *)dictionary;
