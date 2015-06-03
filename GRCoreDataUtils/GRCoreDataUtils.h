@@ -12,6 +12,13 @@
 
 +(NSManagedObject *)managedObjectForEntityName:(NSString *)entityName
                                predicateFormat:(NSString *)predicateFormat
+                        inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass
+                                predicateFormat:(NSString *)predicateFormat
+                         inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+
++(NSManagedObject *)managedObjectForEntityName:(NSString *)entityName
+                               predicateFormat:(NSString *)predicateFormat
                           updateWithDictionary:(NSDictionary *)dictionary
                         inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 

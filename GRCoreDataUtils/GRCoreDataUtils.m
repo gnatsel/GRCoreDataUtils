@@ -8,7 +8,22 @@
 
 #import "GRCoreDataUtils.h"
 @implementation GRCoreDataUtils
-
++(NSManagedObject *)managedObjectForEntityName:(NSString *)entityName
+                               predicateFormat:(NSString *)predicateFormat
+                        inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
+    return [GRCoreDataUtils managedObjectForEntityName:entityName
+                                        predicateFormat:predicateFormat
+                                   updateWithDictionary:nil
+                                 inManagedObjectContext:managedObjectContext];
+}
++(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass
+                                predicateFormat:(NSString *)predicateFormat
+                         inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
+    return [GRCoreDataUtils managedObjectForEntityClass:entityClass
+                                        predicateFormat:predicateFormat
+                                   updateWithDictionary:nil
+                                 inManagedObjectContext:managedObjectContext];
+}
 +(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass
                                 predicateFormat:(NSString *)predicateFormat
                            updateWithDictionary:(NSDictionary *)dictionary
@@ -40,7 +55,6 @@
         if(!error && managedObjectsArray && managedObjectsArray.count > 0){
             managedObject = [managedObjectsArray firstObject];
             shouldInstantiateNewManagedObject = NO;
-            
             [GRCoreDataUtils updateManagedObject:managedObject withDictionary:dictionary];
         }
         else{
@@ -76,23 +90,23 @@
                                  withDictionary:(NSDictionary *)dictionary
                            andKeysInDictionary:(NSArray *)keysInDictionaryArray
                          inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
+    NSManagedObject *managedObject = [GRCoreDataUtils managedObjectForEntityName:entityName
+                                                                 predicateFormat:predicateFormat
+                                                          inManagedObjectContext:managedObjectContext];
     NSUInteger keysInDictionaryArrayCount = keysInDictionaryArray.count;
-    NSMutableDictionary *updateManageObjectDictionary = [NSMutableDictionary dictionaryWithCapacity:keysInDictionaryArrayCount];
     for(NSUInteger keysInDictionaryArrayIndex = 0 ; keysInDictionaryArrayIndex < keysInDictionaryArrayCount ; keysInDictionaryArrayIndex++){
         @try{
             id managedObjectKeyPath = managedObjectKeyPathArray[keysInDictionaryArrayIndex];
             id dictionaryKey = keysInDictionaryArray[keysInDictionaryArrayIndex];
-            updateManageObjectDictionary[managedObjectKeyPath] = dictionary[dictionaryKey]?dictionary[dictionaryKey]:[NSNull null];
+            [managedObject setValue:dictionary[dictionaryKey]
+                         forKeyPath:managedObjectKeyPath];
         }
         @catch(NSException *e){
             NSLog(@"Unresolved error %@, %@", e, [e userInfo]);
         }
         
     }
-    return [GRCoreDataUtils managedObjectForEntityName:entityName
-                                        predicateFormat:predicateFormat
-                                   updateWithDictionary:updateManageObjectDictionary
-                                 inManagedObjectContext:managedObjectContext];
+    return managedObject;
     
 }
 
@@ -133,9 +147,11 @@
 
 
 +(void)updateManagedObject:(NSManagedObject *)managedObject withDictionary:(NSDictionary *)dictionary{
-    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [managedObject setValue:(obj == [NSNull null])?nil:obj forKeyPath:key];
-    }];
+    if(dictionary){
+        [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            [managedObject setValue:(obj == [NSNull null])?nil:obj forKeyPath:key];
+        }];
+    }
 }
 
 
