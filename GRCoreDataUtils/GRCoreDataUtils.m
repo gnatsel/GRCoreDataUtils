@@ -98,7 +98,7 @@
         @try{
             id managedObjectKeyPath = managedObjectKeyPathArray[keysInDictionaryArrayIndex];
             id dictionaryKey = keysInDictionaryArray[keysInDictionaryArrayIndex];
-            [managedObject setValue:dictionary[dictionaryKey]
+            [managedObject setValue:[dictionary valueForKeyPath:dictionaryKey]
                          forKeyPath:managedObjectKeyPath];
         }
         @catch(NSException *e){

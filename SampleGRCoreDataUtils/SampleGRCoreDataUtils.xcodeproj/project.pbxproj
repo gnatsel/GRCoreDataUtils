@@ -15,7 +15,6 @@
 		34C4B5E31B15FBF900F4B7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34C4B5E11B15FBF900F4B7EC /* Main.storyboard */; };
 		34C4B5F31B15FC0B00F4B7EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B5E61B15FC0B00F4B7EC /* AppDelegate.m */; };
 		34C4B5F41B15FC0B00F4B7EC /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B5E91B15FC0B00F4B7EC /* UsersViewController.m */; };
-		34C4B5F51B15FC0B00F4B7EC /* GRCoreDataUtils+AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B5EE1B15FC0B00F4B7EC /* GRCoreDataUtils+AppDelegate.m */; };
 		34C4B5FC1B15FC4C00F4B7EC /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B5FB1B15FC4C00F4B7EC /* Message.m */; };
 		34C4B5FF1B17161800F4B7EC /* UserDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B5FE1B17161800F4B7EC /* UserDAO.m */; };
 		34C4B6061B171D2C00F4B7EC /* UserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B6051B171D2C00F4B7EC /* UserPresenter.m */; };
@@ -24,6 +23,7 @@
 		34C4B6151B17233A00F4B7EC /* SampleGRCoreDataUtils.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B6131B17233A00F4B7EC /* SampleGRCoreDataUtils.xcdatamodeld */; };
 		34C4B6181B17718B00F4B7EC /* EditUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B6171B17718B00F4B7EC /* EditUserViewController.m */; };
 		34C4B61B1B17742000F4B7EC /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B61A1B17742000F4B7EC /* Constants.m */; };
+		34E278E41B20667100F3EB44 /* GRCoreDataUtils+AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E278E31B20667100F3EB44 /* GRCoreDataUtils+AppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +52,6 @@
 		34C4B5E61B15FC0B00F4B7EC /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		34C4B5E81B15FC0B00F4B7EC /* UsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersViewController.h; sourceTree = "<group>"; };
 		34C4B5E91B15FC0B00F4B7EC /* UsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersViewController.m; sourceTree = "<group>"; };
-		34C4B5ED1B15FC0B00F4B7EC /* GRCoreDataUtils+AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GRCoreDataUtils+AppDelegate.h"; sourceTree = "<group>"; };
-		34C4B5EE1B15FC0B00F4B7EC /* GRCoreDataUtils+AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GRCoreDataUtils+AppDelegate.m"; sourceTree = "<group>"; };
 		34C4B5FA1B15FC4C00F4B7EC /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		34C4B5FB1B15FC4C00F4B7EC /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		34C4B5FD1B17161800F4B7EC /* UserDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDAO.h; sourceTree = "<group>"; };
@@ -69,6 +67,8 @@
 		34C4B6171B17718B00F4B7EC /* EditUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserViewController.m; sourceTree = "<group>"; };
 		34C4B61A1B17742000F4B7EC /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		34C4B61C1B17743B00F4B7EC /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		34E278E21B20667100F3EB44 /* GRCoreDataUtils+AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GRCoreDataUtils+AppDelegate.h"; sourceTree = "<group>"; };
+		34E278E31B20667100F3EB44 /* GRCoreDataUtils+AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GRCoreDataUtils+AppDelegate.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +113,6 @@
 				34C4B5D71B15D37600F4B7EC /* GRCoreDataUtils */,
 				34C4B5E41B15FC0B00F4B7EC /* application */,
 				34C4B5E71B15FC0B00F4B7EC /* controllers */,
-				34C4B5EA1B15FC0B00F4B7EC /* managers */,
 				34C4B5EB1B15FC0B00F4B7EC /* models */,
 				34C4B6031B171D1700F4B7EC /* presenters */,
 				34C4B5F21B15FC0B00F4B7EC /* views */,
@@ -180,13 +179,6 @@
 			path = controllers;
 			sourceTree = "<group>";
 		};
-		34C4B5EA1B15FC0B00F4B7EC /* managers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = managers;
-			sourceTree = "<group>";
-		};
 		34C4B5EB1B15FC0B00F4B7EC /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,8 +191,6 @@
 		34C4B5EC1B15FC0B00F4B7EC /* dao */ = {
 			isa = PBXGroup;
 			children = (
-				34C4B5ED1B15FC0B00F4B7EC /* GRCoreDataUtils+AppDelegate.h */,
-				34C4B5EE1B15FC0B00F4B7EC /* GRCoreDataUtils+AppDelegate.m */,
 				34C4B5FD1B17161800F4B7EC /* UserDAO.h */,
 				34C4B5FE1B17161800F4B7EC /* UserDAO.m */,
 			);
@@ -242,6 +232,8 @@
 		34C4B6191B1773F300F4B7EC /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				34E278E21B20667100F3EB44 /* GRCoreDataUtils+AppDelegate.h */,
+				34E278E31B20667100F3EB44 /* GRCoreDataUtils+AppDelegate.m */,
 				34C4B61C1B17743B00F4B7EC /* Constants.h */,
 				34C4B61A1B17742000F4B7EC /* Constants.m */,
 			);
@@ -348,11 +340,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34C4B5F51B15FC0B00F4B7EC /* GRCoreDataUtils+AppDelegate.m in Sources */,
 				34C4B6151B17233A00F4B7EC /* SampleGRCoreDataUtils.xcdatamodeld in Sources */,
 				34C4B6061B171D2C00F4B7EC /* UserPresenter.m in Sources */,
 				34C4B61B1B17742000F4B7EC /* Constants.m in Sources */,
 				34C4B6181B17718B00F4B7EC /* EditUserViewController.m in Sources */,
+				34E278E41B20667100F3EB44 /* GRCoreDataUtils+AppDelegate.m in Sources */,
 				34C4B60F1B171FC200F4B7EC /* UserTableViewCell.m in Sources */,
 				34C4B5FC1B15FC4C00F4B7EC /* Message.m in Sources */,
 				34C4B5FF1B17161800F4B7EC /* UserDAO.m in Sources */,
