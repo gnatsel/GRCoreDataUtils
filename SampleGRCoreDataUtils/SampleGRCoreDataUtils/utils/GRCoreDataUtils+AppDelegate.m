@@ -13,44 +13,66 @@
 
 +(NSManagedObject *)managedObjectForEntityName:(NSString *)entityName
                                predicateFormat:(NSString *)predicateFormat
-                         managedObjectKeyPaths:(NSArray *)managedObjectKeyPathArray
+                         managedObjectKeyPaths:(NSArray *)managedObjectKeyPathsArray
                                 withDictionary:(NSDictionary *)dictionary
-                           andKeysInDictionary:(NSArray *)keysInDictionaryArray{
+                           dictionaryKeyPaths:(NSArray *)dictionaryKeyPathsArray{
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     return [GRCoreDataUtils managedObjectForEntityName:entityName
                                        predicateFormat:predicateFormat
-                                 managedObjectKeyPaths:managedObjectKeyPathArray
+                                 managedObjectKeyPaths:managedObjectKeyPathsArray
                                         withDictionary:dictionary
-                                   andKeysInDictionary:keysInDictionaryArray
+                                   dictionaryKeyPaths:dictionaryKeyPathsArray
                                 inManagedObjectContext:appDelegate.managedObjectContext];
     
 }
+
+
 +(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass
                                 predicateFormat:(NSString *)predicateFormat
-                          managedObjectKeyPaths:(NSArray *)managedObjectKeyPathArray
+                          managedObjectKeyPaths:(NSArray *)managedObjectKeyPathsArray
                                  withDictionary:(NSDictionary *)dictionary
-                            andKeysInDictionary:(NSArray *)keysInDictionaryArray{
+                            dictionaryKeyPaths:(NSArray *)dictionaryKeyPathsArray{
+    
     return [GRCoreDataUtils managedObjectForEntityName:NSStringFromClass(entityClass)
                                        predicateFormat:predicateFormat
-                                 managedObjectKeyPaths:managedObjectKeyPathArray
+                                 managedObjectKeyPaths:managedObjectKeyPathsArray
                                         withDictionary:dictionary
-                                   andKeysInDictionary:keysInDictionaryArray];
+                                   dictionaryKeyPaths:dictionaryKeyPathsArray];
 }
-+(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass predicateFormat:(NSString *)predicateFormat updateWithDictionary:(NSDictionary *)dictionary{
+
+
++(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass
+                                predicateFormat:(NSString *)predicateFormat
+                          updatedWithDictionary:(NSDictionary *)dictionary{
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-    
     return [GRCoreDataUtils managedObjectForEntityClass:entityClass
                                         predicateFormat:predicateFormat
                                    updateWithDictionary:dictionary
                                  inManagedObjectContext:appDelegate.managedObjectContext];
 }
 
-+(NSManagedObject *)instantiateManagedObjectForEntityClass:(Class)entityClass withEntityDescription:(NSEntityDescription *)entityDescription withDictionary:(NSDictionary *)dictionary{
-    return [GRCoreDataUtils instantiateManagedObjectForEntityName:NSStringFromClass(entityClass) withEntityDescription:entityDescription withDictionary:dictionary];
+
+
+
++(NSManagedObject *)managedObjectForEntityName:(NSString *)entityName
+                               predicateFormat:(NSString *)predicateFormat
+                         updatedWithDictionary:(NSDictionary *)dictionary{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    return [GRCoreDataUtils managedObjectForEntityName:entityName
+                                        predicateFormat:predicateFormat
+                                   updateWithDictionary:dictionary
+                                 inManagedObjectContext:appDelegate.managedObjectContext];
 }
 
-+(NSManagedObject *)instantiateManagedObjectForEntityName:(NSString *)entityName withEntityDescription:(NSEntityDescription *)entityDescription withDictionary:(NSDictionary *)dictionary{
++(NSManagedObject *)instantiateManagedObjectForEntityClass:(Class)entityClass
+                                            withDictionary:(NSDictionary *)dictionary{
+    return [GRCoreDataUtils instantiateManagedObjectForEntityName:NSStringFromClass(entityClass) withDictionary:dictionary];
+}
+
++(NSManagedObject *)instantiateManagedObjectForEntityName:(NSString *)entityName
+                                           withDictionary:(NSDictionary *)dictionary{
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:entityName inManagedObjectContext:appDelegate.managedObjectContext];
     return [GRCoreDataUtils instantiateManagedObjectWithEntityDescription:entityDescription
                                                    withDictionary:dictionary
                                            inManagedObjectContext:appDelegate.managedObjectContext];

@@ -7,7 +7,6 @@
 //
 
 #import "User.h"
-#import "Message.h"
 
 
 @implementation User
@@ -15,7 +14,5 @@
 @dynamic firstname;
 @dynamic lastname;
 @dynamic userId;
-@dynamic receivedMessages;
-@dynamic sentMessages;
 
 @end

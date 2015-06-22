@@ -9,8 +9,10 @@
 #import "EditUserViewController.h"
 #import "User.h"
 #import "UserPresenter.h"
+#import "UIView+Presenter.h"
+#import "Presenter.h"
+
 @interface EditUserViewController ()
-@property (weak, nonatomic) IBOutlet UserPresenter *userPresenter;
 
 @end
 
@@ -21,7 +23,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     if(_currentUser){
         self.title = @"Edit user";
-        [_userPresenter configureWithUser:_currentUser];
+        [self.view.presenter configureWithObject:_currentUser];
     }
     else{
         self.title = @"Create User";
@@ -35,19 +37,13 @@
 }
 
 - (IBAction)validateAction:(id)sender {
+    NSMutableDictionary *dictionaryEntity = (NSMutableDictionary *)[self.view.presenter dictionaryEntity];
     if(_currentUser){
-        [UserDAO updateManagedObject:_currentUser withDictionary:@{
-                                                                   @"firstname":_userPresenter.firstnameTextField.text,
-                                                                   @"lastname":_userPresenter.lastnameTextField.text
-                                                                   }];
+        [UserDAO updateManagedObject:_currentUser withDictionary:dictionaryEntity];
     }
     else{
-        
-        [UserDAO userUpdatedWithDictionary:@{
-                                             @"userId":_currentUser?_currentUser.userId:[[NSUUID UUID]UUIDString],
-                                             @"firstname":_userPresenter.firstnameTextField.text,
-                                             @"lastname":_userPresenter.lastnameTextField.text
-                                             }];
+        dictionaryEntity[@"userId"] = [[NSUUID UUID]UUIDString];
+        [UserDAO userUpdatedWithDictionary:dictionaryEntity];
     }
     [UserDAO saveDatabase];
     [self.navigationController popViewControllerAnimated:YES];

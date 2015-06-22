@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "UserDAO.h"
 
-
-
 @interface EditUserViewController : UIViewController
 @property (nonatomic,strong) User *currentUser;
 

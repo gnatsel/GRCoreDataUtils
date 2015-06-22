@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fyC-40-cGq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fyC-40-cGq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -57,7 +57,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="userPresenter" destination="fAu-Uu-Mp9" id="IoM-cb-CPZ"/>
+                                            <outlet property="presenter" destination="fAu-Uu-Mp9" id="jVZ-b3-F9y"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -159,21 +159,21 @@
                             <constraint firstItem="Y2K-KA-PPO" firstAttribute="top" secondItem="BiP-Uv-K7O" secondAttribute="bottom" id="neb-Kh-tX3"/>
                             <constraint firstItem="BiP-Uv-K7O" firstAttribute="leading" secondItem="eLJ-4z-tgz" secondAttribute="leadingMargin" constant="-16" id="o1m-zW-dMw"/>
                         </constraints>
+                        <connections>
+                            <outlet property="presenter" destination="BiP-Uv-K7O" id="KH7-Bd-FR0"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="a7H-hG-j8I"/>
-                    <connections>
-                        <outlet property="userPresenter" destination="BiP-Uv-K7O" id="W5a-g2-SZg"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQh-Qw-6cc" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2389" y="414"/>
         </scene>
-        <!--Edit User-->
+        <!--Edit Users-->
         <scene sceneID="LW7-Yn-WIP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H6B-1E-NT2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Edit User" image="add_friend_btn" id="fWm-v9-oyf"/>
+                    <tabBarItem key="tabBarItem" title="Edit Users" image="add_friend_btn" id="fWm-v9-oyf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SMb-73-gxN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -188,22 +188,6 @@
             </objects>
             <point key="canvasLocation" x="779" y="414"/>
         </scene>
-        <!--Send Message-->
-        <scene sceneID="E5z-if-M71">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="233-fk-tEe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Send Message" image="write_btn" id="7L2-A7-Z65"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bQE-wy-5Qk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IOw-ec-hTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="779" y="1102"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Gm6-vZ-gQ3">
             <objects>
@@ -216,7 +200,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="H6B-1E-NT2" kind="relationship" relationship="viewControllers" id="PHt-Dg-sDV"/>
-                        <segue destination="233-fk-tEe" kind="relationship" relationship="viewControllers" id="oo8-lD-c67"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3a-yD-DvU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -226,7 +209,6 @@
     </scenes>
     <resources>
         <image name="add_friend_btn" width="34" height="30"/>
-        <image name="write_btn" width="29" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TjT-c7-Uvj"/>

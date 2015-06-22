@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserPresenter.h"
 
 @interface UserTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UserPresenter *userPresenter;
 
 @end

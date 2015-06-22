@@ -11,6 +11,8 @@
 #import "User.h"
 #import "Constants.h"
 #import "EditUserViewController.h"
+#import "UIView+Presenter.h"
+#import "Presenter.h"
 
 @interface UsersViewController ()
 @property (nonatomic,strong) NSFetchedResultsController *usersFetchedResultsController;
@@ -50,7 +52,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *cellIdentifier = NSStringFromClass([UserTableViewCell class]);
     UserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    [cell.userPresenter configureWithUser:[_usersFetchedResultsController objectAtIndexPath:indexPath]];
+    [cell.presenter configureWithObject:[_usersFetchedResultsController objectAtIndexPath:indexPath]];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -88,7 +90,7 @@
                     break;
                 }
                 case NSFetchedResultsChangeUpdate:{
-                    [((UserTableViewCell *)[_tableView cellForRowAtIndexPath:indexPath]).userPresenter configureWithUser:[_usersFetchedResultsController objectAtIndexPath:indexPath]];
+                    [((UserTableViewCell *)[_tableView cellForRowAtIndexPath:indexPath]).presenter configureWithObject:[_usersFetchedResultsController objectAtIndexPath:indexPath]];
  
                     break;
                 }

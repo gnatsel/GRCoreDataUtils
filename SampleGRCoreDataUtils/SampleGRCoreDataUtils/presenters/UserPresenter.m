@@ -9,10 +9,13 @@
 #import "UserPresenter.h"
 #import "User.h"
 @implementation UserPresenter
+-(void)configureWithObject:(id)anObject{
+    [super configureWithObject:anObject];
+    [self configureWithUser:anObject];
+}
+
 -(void)configureWithUser:(User *)user{
     [self configureFullNameLabelWithUser:user];
-    [self configureNumberOfMessagesReceivedLabelWithUser:user];
-    [self configureNumberOfMessagesSentLabelWithUser:user];
     [self configureFirstnameTextFieldWithUser:user];
     [self configureLastnameTextFieldWithUser:user];
 }
@@ -34,17 +37,6 @@
     }
 }
 
--(void)configureNumberOfMessagesReceivedLabelWithUser:(User *)user{
-    if(_numberOfMessagesReceivedLabel){
-        _numberOfMessagesReceivedLabel.text = [NSString stringWithFormat:@"%d",(int)user.receivedMessages.count];
-    }
-}
-
--(void)configureNumberOfMessagesSentLabelWithUser:(User *)user{
-    if(_numberOfMessagesSentLabel){
-        _numberOfMessagesSentLabel.text = [NSString stringWithFormat:@"%d",(int)user.sentMessages.count];
-    }
-}
 
 
 -(void)configureFirstnameTextFieldWithUser:(User *)user{
@@ -59,5 +51,16 @@
 
 
     }
+}
+
+-(NSDictionary *)dictionaryEntity{
+    NSMutableDictionary *dictionaryEntity = [NSMutableDictionary dictionary];
+    if(_firstnameTextField){
+        dictionaryEntity[@"firstname"] = self.firstnameTextField.text;
+    }
+    if(_lastnameTextField){
+        dictionaryEntity[@"lastname"] = self.lastnameTextField.text;
+    }
+    return dictionaryEntity;
 }
 @end

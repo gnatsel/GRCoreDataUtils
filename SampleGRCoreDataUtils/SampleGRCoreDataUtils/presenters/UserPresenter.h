@@ -11,9 +11,6 @@
 @interface UserPresenter : Presenter
 
 @property (nonatomic, weak) IBOutlet UILabel *fullnameLabel;
-@property (nonatomic, weak) IBOutlet UILabel *numberOfMessagesReceivedLabel;
-@property (nonatomic, weak) IBOutlet UILabel *numberOfMessagesSentLabel;
-
 @property (nonatomic, weak) IBOutlet UITextField *lastnameTextField;
 @property (nonatomic, weak) IBOutlet UITextField *firstnameTextField;
 

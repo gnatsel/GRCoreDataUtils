@@ -8,6 +8,8 @@
 
 #import "GRCoreDataUtils.h"
 @implementation GRCoreDataUtils
+
+
 +(NSManagedObject *)managedObjectForEntityName:(NSString *)entityName
                                predicateFormat:(NSString *)predicateFormat
                         inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
@@ -16,6 +18,8 @@
                                    updateWithDictionary:nil
                                  inManagedObjectContext:managedObjectContext];
 }
+
+
 +(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass
                                 predicateFormat:(NSString *)predicateFormat
                          inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
@@ -24,6 +28,8 @@
                                    updateWithDictionary:nil
                                  inManagedObjectContext:managedObjectContext];
 }
+
+
 +(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass
                                 predicateFormat:(NSString *)predicateFormat
                            updateWithDictionary:(NSDictionary *)dictionary
@@ -60,7 +66,7 @@
         else{
             
             if(error){
-                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                DLog(@"Unresolved error %@, %@", error, [error userInfo]);
             }
         }
         
@@ -86,23 +92,23 @@
 
 +(NSManagedObject *)managedObjectForEntityName:(NSString *)entityName
                                predicateFormat:(NSString *)predicateFormat
-                         managedObjectKeyPaths:(NSArray *)managedObjectKeyPathArray
+                         managedObjectKeyPaths:(NSArray *)managedObjectKeyPathsArray
                                  withDictionary:(NSDictionary *)dictionary
-                           andKeysInDictionary:(NSArray *)keysInDictionaryArray
+                           dictionaryKeyPaths:(NSArray *)dictionaryKeyPathsArray
                          inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
     NSManagedObject *managedObject = [GRCoreDataUtils managedObjectForEntityName:entityName
                                                                  predicateFormat:predicateFormat
                                                           inManagedObjectContext:managedObjectContext];
-    NSUInteger keysInDictionaryArrayCount = keysInDictionaryArray.count;
-    for(NSUInteger keysInDictionaryArrayIndex = 0 ; keysInDictionaryArrayIndex < keysInDictionaryArrayCount ; keysInDictionaryArrayIndex++){
+    NSUInteger dictionaryKeyPathsArrayCount = dictionaryKeyPathsArray.count;
+    for(NSUInteger dictionaryKeyPathsArrayIndex = 0 ; dictionaryKeyPathsArrayIndex < dictionaryKeyPathsArrayCount ; dictionaryKeyPathsArrayIndex++){
         @try{
-            id managedObjectKeyPath = managedObjectKeyPathArray[keysInDictionaryArrayIndex];
-            id dictionaryKey = keysInDictionaryArray[keysInDictionaryArrayIndex];
+            id managedObjectKeyPath = managedObjectKeyPathsArray[dictionaryKeyPathsArrayIndex];
+            id dictionaryKey = dictionaryKeyPathsArray[dictionaryKeyPathsArrayIndex];
             [managedObject setValue:[dictionary valueForKeyPath:dictionaryKey]
                          forKeyPath:managedObjectKeyPath];
         }
         @catch(NSException *e){
-            NSLog(@"Unresolved error %@, %@", e, [e userInfo]);
+            DLog(@"Unresolved error %@, %@", e, [e userInfo]);
         }
         
     }
@@ -112,26 +118,30 @@
 
 +(NSManagedObject *)managedObjectForEntityClass:(Class)entityClass
                                predicateFormat:(NSString *)predicateFormat
-                         managedObjectKeyPaths:(NSArray *)managedObjectKeyPathArray
+                         managedObjectKeyPaths:(NSArray *)managedObjectKeyPathsArray
                                 withDictionary:(NSDictionary *)dictionary
-                          andKeysInDictionary:(NSArray *)keysInDictionaryArray
+                          dictionaryKeyPaths:(NSArray *)dictionaryKeyPathsArray
                         inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
     return [GRCoreDataUtils managedObjectForEntityName:NSStringFromClass(entityClass)
                                        predicateFormat:predicateFormat
-                                 managedObjectKeyPaths:managedObjectKeyPathArray
+                                 managedObjectKeyPaths:managedObjectKeyPathsArray
                                         withDictionary:dictionary
-                                  andKeysInDictionary:keysInDictionaryArray
+                                  dictionaryKeyPaths:dictionaryKeyPathsArray
                                 inManagedObjectContext:managedObjectContext];
 }
 
 
-+(NSArray *)managedObjectsArrayForEntityClass:(Class)entityClass  predicateFormat:(NSString *)predicateFormat inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
++(NSArray *)managedObjectsArrayForEntityClass:(Class)entityClass
+                              predicateFormat:(NSString *)predicateFormat
+                       inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
     return [GRCoreDataUtils managedObjectsArrayForEntityName:NSStringFromClass(entityClass) predicateFormat:predicateFormat inManagedObjectContext:managedObjectContext];
 }
 
 
 
-+(NSArray *)managedObjectsArrayForEntityName:(NSString *)entityName  predicateFormat:(NSString *)predicateFormat inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
++(NSArray *)managedObjectsArrayForEntityName:(NSString *)entityName
+                             predicateFormat:(NSString *)predicateFormat
+                      inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
     NSFetchRequest *request= [[NSFetchRequest alloc] initWithEntityName:entityName];
     if(predicateFormat){
         [request setPredicate:[NSPredicate predicateWithFormat:predicateFormat]];
@@ -139,14 +149,15 @@
     NSError *error = nil;
     NSArray *managedObjectsArray = [managedObjectContext executeFetchRequest:request error:&error];
     if(error){
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        DLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
     return managedObjectsArray;
 }
 
 
 
-+(void)updateManagedObject:(NSManagedObject *)managedObject withDictionary:(NSDictionary *)dictionary{
++(void)updateManagedObject:(NSManagedObject *)managedObject
+            withDictionary:(NSDictionary *)dictionary{
     if(dictionary){
         [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             [managedObject setValue:(obj == [NSNull null])?nil:obj forKeyPath:key];
@@ -157,26 +168,28 @@
 
 
 
-+(void)deleteManagedObjectsNotInArray:(NSArray *)managedObjectArray
++(void)deleteManagedObjectsNotInArray:(NSArray *)managedObjectsArray
                        forEntityClass:(Class)entityClass
                       predicateFormat:(NSString *)predicateFormat
                inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
-    [GRCoreDataUtils deleteManagedObjectsNotInArray:managedObjectArray
+    [GRCoreDataUtils deleteManagedObjectsNotInArray:managedObjectsArray
                                    forEntityName:NSStringFromClass(entityClass)
                                  predicateFormat:predicateFormat
                           inManagedObjectContext:managedObjectContext];
 }
-+(void)deleteManagedObjectsNotInArray:(NSArray *)managedObjectArray
++(void)deleteManagedObjectsNotInArray:(NSArray *)managedObjectsArray
                         forEntityName:(NSString *)entityName
                       predicateFormat:(NSString *)predicateFormat
                inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
-    NSArray *allManagedObjectArray = [GRCoreDataUtils managedObjectsArrayForEntityName:entityName predicateFormat:predicateFormat inManagedObjectContext:managedObjectContext];
-    for(NSManagedObject *managedObject in allManagedObjectArray){
-        if(![managedObjectArray containsObject:managedObject]){
+    //Fetch all managed objects satisfying "predicateFormat" and delete the ones not in "managedObjectsArray"
+    //Should be rewrote
+    NSArray *allmanagedObjectsArray = [GRCoreDataUtils managedObjectsArrayForEntityName:entityName predicateFormat:predicateFormat inManagedObjectContext:managedObjectContext];
+    for(NSManagedObject *managedObject in allmanagedObjectsArray){
+        if(![managedObjectsArray containsObject:managedObject]){
             @try {
                 BOOL shouldDeleteManagedObject = YES;
-                for(NSManagedObject *newManagedObject in managedObjectArray){
+                for(NSManagedObject *newManagedObject in managedObjectsArray){
                     if([newManagedObject.objectID isEqual:managedObject.objectID]){
                         shouldDeleteManagedObject = NO;
                         break;
@@ -186,7 +199,7 @@
                     [managedObjectContext deleteObject:[managedObjectContext objectWithID:managedObject.objectID]];
             }
             @catch (NSException *e) {
-                NSLog(@"Unresolved error %@, %@", e, [e userInfo]);
+                DLog(@"Unresolved error %@, %@", e, [e userInfo]);
             }
             @finally {
                 
@@ -199,7 +212,7 @@
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            DLog(@"Unresolved error %@, %@", error, [error userInfo]);
         }
         
     }
@@ -207,17 +220,19 @@
 
 
 
-+(void)deleteManagedObjectsForEntityClass:(Class )entityClass inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
++(void)deleteManagedObjectsForEntityClass:(Class )entityClass
+                   inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
     [GRCoreDataUtils deleteManagedObjectsForEntityName:NSStringFromClass(entityClass) inManagedObjectContext:managedObjectContext];
 }
-+(void)deleteManagedObjectsForEntityName:(NSString *)entityName inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
-    NSArray *allManagedObjectArray = [GRCoreDataUtils managedObjectsArrayForEntityName:entityName predicateFormat:nil inManagedObjectContext:managedObjectContext];
-    for(NSManagedObject *managedObject in allManagedObjectArray){
++(void)deleteManagedObjectsForEntityName:(NSString *)entityName
+                  inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext{
+    NSArray *allmanagedObjectsArray = [GRCoreDataUtils managedObjectsArrayForEntityName:entityName predicateFormat:nil inManagedObjectContext:managedObjectContext];
+    for(NSManagedObject *managedObject in allmanagedObjectsArray){
         @try {
             [managedObjectContext deleteObject:managedObject];
         }
         @catch (NSException *exception) {
-            NSLog(@"%@",exception);
+            DLog(@"%@",exception);
         }
         @finally {
             
@@ -226,7 +241,7 @@
     if (managedObjectContext != nil) {
         NSError *error = nil;
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            DLog(@"Unresolved error %@, %@", error, [error userInfo]);
         }
         
     }
@@ -263,15 +278,29 @@
     @try {
         [fetchedResultsController performFetch:&error];
         if(error)
-            NSLog(@"%@",error);
+            DLog(@"%@",error);
     }
     @catch (NSException *exception) {
-        NSLog(@"Exception : %@",exception);
+        DLog(@"Exception : %@",exception);
     }
     @finally {
         
     }
     return fetchedResultsController;
+    
+}
+
++(NSFetchedResultsController *)fetchedResultsControllerForEntityClass:(Class)entityClass
+                                                            delegate:(id<NSFetchedResultsControllerDelegate>)delegate
+                                                     predicateFormat:(NSString *)predicateFormat
+                                                     sortDescriptors:(NSArray *)sortDescriptors
+                                                managedObjectContext:(NSManagedObjectContext *)managedObjectContext
+{
+   return [GRCoreDataUtils fetchedResultsControllerForEntityName:NSStringFromClass(entityClass)
+                                                        delegate:delegate
+                                                 predicateFormat:predicateFormat
+                                                 sortDescriptors:sortDescriptors
+                                            managedObjectContext:managedObjectContext];
     
 }
 

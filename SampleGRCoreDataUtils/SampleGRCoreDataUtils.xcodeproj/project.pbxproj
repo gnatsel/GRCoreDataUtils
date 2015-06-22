@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		343C526F1B1C5CD200F9EE3B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 343C526D1B1C5CD200F9EE3B /* LaunchScreen.xib */; };
+		345B47CF1B3846D100BDE91A /* Presenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 345B47CE1B3846D100BDE91A /* Presenter.m */; };
+		345B47D31B384A7500BDE91A /* UIView+Presenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 345B47D21B384A7500BDE91A /* UIView+Presenter.m */; };
 		34C4B5AE1B15D33A00F4B7EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B5AD1B15D33A00F4B7EC /* main.m */; };
 		34C4B5BC1B15D33A00F4B7EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34C4B5BB1B15D33A00F4B7EC /* Images.xcassets */; };
 		34C4B5CB1B15D33A00F4B7EC /* SampleGRCoreDataUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B5CA1B15D33A00F4B7EC /* SampleGRCoreDataUtilsTests.m */; };
@@ -15,7 +17,6 @@
 		34C4B5E31B15FBF900F4B7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34C4B5E11B15FBF900F4B7EC /* Main.storyboard */; };
 		34C4B5F31B15FC0B00F4B7EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B5E61B15FC0B00F4B7EC /* AppDelegate.m */; };
 		34C4B5F41B15FC0B00F4B7EC /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B5E91B15FC0B00F4B7EC /* UsersViewController.m */; };
-		34C4B5FC1B15FC4C00F4B7EC /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B5FB1B15FC4C00F4B7EC /* Message.m */; };
 		34C4B5FF1B17161800F4B7EC /* UserDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B5FE1B17161800F4B7EC /* UserDAO.m */; };
 		34C4B6061B171D2C00F4B7EC /* UserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B6051B171D2C00F4B7EC /* UserPresenter.m */; };
 		34C4B60F1B171FC200F4B7EC /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4B60E1B171FC200F4B7EC /* UserTableViewCell.m */; };
@@ -38,6 +39,10 @@
 
 /* Begin PBXFileReference section */
 		343C526E1B1C5CD200F9EE3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = SampleGRCoreDataUtils/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
+		345B47CD1B3846D100BDE91A /* Presenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presenter.h; sourceTree = "<group>"; };
+		345B47CE1B3846D100BDE91A /* Presenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Presenter.m; sourceTree = "<group>"; };
+		345B47D11B384A7500BDE91A /* UIView+Presenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Presenter.h"; sourceTree = "<group>"; };
+		345B47D21B384A7500BDE91A /* UIView+Presenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Presenter.m"; sourceTree = "<group>"; };
 		34C4B5A81B15D33A00F4B7EC /* SampleGRCoreDataUtils.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleGRCoreDataUtils.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C4B5AC1B15D33A00F4B7EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34C4B5AD1B15D33A00F4B7EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -52,8 +57,6 @@
 		34C4B5E61B15FC0B00F4B7EC /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		34C4B5E81B15FC0B00F4B7EC /* UsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersViewController.h; sourceTree = "<group>"; };
 		34C4B5E91B15FC0B00F4B7EC /* UsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersViewController.m; sourceTree = "<group>"; };
-		34C4B5FA1B15FC4C00F4B7EC /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		34C4B5FB1B15FC4C00F4B7EC /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		34C4B5FD1B17161800F4B7EC /* UserDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDAO.h; sourceTree = "<group>"; };
 		34C4B5FE1B17161800F4B7EC /* UserDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDAO.m; sourceTree = "<group>"; };
 		34C4B6041B171D2C00F4B7EC /* UserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPresenter.h; sourceTree = "<group>"; };
@@ -89,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		345B47D01B384A7500BDE91A /* categories */ = {
+			isa = PBXGroup;
+			children = (
+				345B47D11B384A7500BDE91A /* UIView+Presenter.h */,
+				345B47D21B384A7500BDE91A /* UIView+Presenter.m */,
+			);
+			path = categories;
+			sourceTree = "<group>";
+		};
 		34C4B59F1B15D33A00F4B7EC = {
 			isa = PBXGroup;
 			children = (
@@ -201,8 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				34C4B6131B17233A00F4B7EC /* SampleGRCoreDataUtils.xcdatamodeld */,
-				34C4B5FA1B15FC4C00F4B7EC /* Message.h */,
-				34C4B5FB1B15FC4C00F4B7EC /* Message.m */,
 				34C4B6101B17230E00F4B7EC /* User.h */,
 				34C4B6111B17230E00F4B7EC /* User.m */,
 			);
@@ -212,6 +222,7 @@
 		34C4B5F21B15FC0B00F4B7EC /* views */ = {
 			isa = PBXGroup;
 			children = (
+				345B47D01B384A7500BDE91A /* categories */,
 				34C4B60D1B171FC200F4B7EC /* UserTableViewCell.h */,
 				34C4B60E1B171FC200F4B7EC /* UserTableViewCell.m */,
 				34C4B5E11B15FBF900F4B7EC /* Main.storyboard */,
@@ -225,6 +236,8 @@
 			children = (
 				34C4B6041B171D2C00F4B7EC /* UserPresenter.h */,
 				34C4B6051B171D2C00F4B7EC /* UserPresenter.m */,
+				345B47CD1B3846D100BDE91A /* Presenter.h */,
+				345B47CE1B3846D100BDE91A /* Presenter.m */,
 			);
 			path = presenters;
 			sourceTree = "<group>";
@@ -342,11 +355,12 @@
 			files = (
 				34C4B6151B17233A00F4B7EC /* SampleGRCoreDataUtils.xcdatamodeld in Sources */,
 				34C4B6061B171D2C00F4B7EC /* UserPresenter.m in Sources */,
+				345B47CF1B3846D100BDE91A /* Presenter.m in Sources */,
 				34C4B61B1B17742000F4B7EC /* Constants.m in Sources */,
 				34C4B6181B17718B00F4B7EC /* EditUserViewController.m in Sources */,
+				345B47D31B384A7500BDE91A /* UIView+Presenter.m in Sources */,
 				34E278E41B20667100F3EB44 /* GRCoreDataUtils+AppDelegate.m in Sources */,
 				34C4B60F1B171FC200F4B7EC /* UserTableViewCell.m in Sources */,
-				34C4B5FC1B15FC4C00F4B7EC /* Message.m in Sources */,
 				34C4B5FF1B17161800F4B7EC /* UserDAO.m in Sources */,
 				34C4B6121B17230E00F4B7EC /* User.m in Sources */,
 				34C4B5DA1B15D37600F4B7EC /* GRCoreDataUtils.m in Sources */,
