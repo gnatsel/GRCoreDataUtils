@@ -112,19 +112,142 @@
 +(NSManagedObject *)instantiateManagedObjectForEntityClass:(Class)entityClass withDictionary:(NSDictionary *)dictionary;
 
 
+/**
+ * Fetch NSManagedObjects for the given entity class
+ *
+ * @param entityClass   The class of the entity to fetch
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ *
+ * @return an NSArray of NSManagedObjects for the given entity class
+ */
 +(NSArray *)managedObjectsArrayForEntityClass:(Class)entityClass;
+
+/**
+ * Fetch NSManagedObjects for the given entity class and predicate
+ *
+ * @param entityClass       The class of the entity to fetch
+ * @param predicateFormat   The predicate of the fetch request
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ *
+ * @return an NSArray of NSManagedObjects for the given entity class
+ */
 +(NSArray *)managedObjectsArrayForEntityClass:(Class)entityClass  predicateFormat:(NSString *)predicateFormat;
+
+/**
+ * Fetch NSManagedObjects for the given entity name
+ *
+ * @param entityName   The name of the entity to fetch
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ *
+ * @return an NSArray of NSManagedObjects for the given entity name
+ */
 +(NSArray *)managedObjectsArrayForEntityName:(NSString *)entityName;
+
+/**
+ * Fetch NSManagedObjects for the given entity class and predicate
+ *
+ * @param entityName       The name of the entity to fetch
+ * @param predicateFormat   The predicate of the fetch request
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ *
+ * @return an NSArray of NSManagedObjects for the given entity name
+ */
 +(NSArray *)managedObjectsArrayForEntityName:(NSString *)entityName  predicateFormat:(NSString *)predicateFormat;
 
+
+/**
+ * Delete the given managed object
+ *
+ * @param managedObject   The NSManagedObject to delete
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ */
 +(void)deleteManagedObject:(NSManagedObject *)managedObject;
+
+/**
+ * Delete all NSManagedObjects not existing in managedObjectsArray for the given entity class
+ *
+ * @param managedObjectArray    The NSArray of NSManagedObjects to preserve
+ * @param entityClass           The class of the entity to fetch
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ */
 +(void)deleteManagedObjectsNotInArray:(NSArray *)managedObjectArray forEntityClass:(Class)entityClass;
+
+/**
+ * Delete all NSManagedObjects not existing in managedObjectsArray for the given entity name
+ *
+ * @param managedObjectArray    The NSArray of NSManagedObjects to preserve
+ * @param entityName            The name of the entity to fetch
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ */
 +(void)deleteManagedObjectsNotInArray:(NSArray *)managedObjectArray forEntityName:(NSString *)entityName;
+
+/**
+ * Delete all NSManagedObjects not existing in managedObjectsArray for the given entity class and corresponding to the given predicate
+ *
+ * @param managedObjectArray    The NSArray of NSManagedObjects to preserve
+ * @param entityClass           The name of the entity to fetch
+ * @param predicateFormat       The predicate used to delete NSManagedObjects
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ */
 +(void)deleteManagedObjectsNotInArray:(NSArray *)managedObjectArray forEntityClass:(Class)entityClass predicateFormat:(NSString *)predicateFormat;
+
+/**
+ * Delete all NSManagedObjects not existing in managedObjectsArray for the given entity class and corresponding to the given predicate
+ *
+ * @param managedObjectArray    The NSArray of NSManagedObjects to preserve
+ * @param entityName           The name of the entity to fetch
+ * @param predicateFormat       The predicate used to delete NSManagedObjects
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ */
 +(void)deleteManagedObjectsNotInArray:(NSArray *)managedObjectArray forEntityName:(NSString *)entityName predicateFormat:(NSString *)predicateFormat;
+
+/**
+ * Delete all NSManagedObjects for the given entity class
+ *
+ * @param entityClass           The name of the entity to fetch
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ */
 +(void)deleteManagedObjectsForEntityClass:(Class )entityClass;
+
+/**
+ * Delete all NSManagedObjects for the given entity name
+ *
+ * @param entityName           The name of the entity to fetch
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ */
 +(void)deleteManagedObjectsForEntityName:(NSString *)entityName;
+
+/**
+ * Set a keyPath value for all NSManagedObjects corresponding to the given entity class not existing in managedObjectArray
+ *
+ * @param value           The value that will be set for the given keyPath
+ * @param keyPath         The keyPath in the NSManagedObjects to update
+ * @param entityClass     The class of the entity to fetch
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ */
 +(void)setValue:(id)value forKeyPath:(NSString *)keyPath forManagedObjectClass:(Class)entityClass notInArray:(NSArray *)managedObjectArray;
+
+/**
+ * Set a keyPath value for all NSManagedObjects corresponding to the given entity class not existing in managedObjectArray
+ *
+ * @param value           The value that will be set for the given keyPath
+ * @param keyPath         The keyPath in the NSManagedObjects to update
+ * @param entityName           The name of the entity to fetch
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ */
 +(void)setValue:(id)value forKeyPath:(NSString *)keyPath forManagedObjectNamed:(NSString *)entityName notInArray:(NSArray *)managedObjectArray;
 
 /**
@@ -132,19 +255,66 @@
  */
 +(void)saveDatabase;
 
+
+/**
+ * Instantiate and return an NSFetchedResultsController for an entity with the given class
+ *
+ * @param entityClass       The class of the entity to fetch
+ * @param delegate          The delegate of the NSFetchedResultsController
+ * @param sortDescriptors   The sort descriptors used by the NSFetchedRequest instance of the NSFetchedResultsController
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ *
+ * @return an instantiated NSFetchedResultsController
+ */
 +(NSFetchedResultsController *)fetchedResultsControllerForEntityClass:(Class)entityClass
                                                              delegate:(id<NSFetchedResultsControllerDelegate>)delegate
                                                       sortDescriptors:(NSArray *)sortDescriptors;
 
+/**
+ * Instantiate and return an NSFetchedResultsController for an entity with the given name
+ *
+ * @param entityName        The name of the entity to fetch
+ * @param delegate          The delegate of the NSFetchedResultsController
+ * @param sortDescriptors   The sort descriptors used by the NSFetchedRequest instance of the NSFetchedResultsController
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ *
+ * @return an instantiated NSFetchedResultsController
+ */
 +(NSFetchedResultsController *)fetchedResultsControllerForEntityName:(NSString *)entityName
                                                             delegate:(id<NSFetchedResultsControllerDelegate>)delegate
                                                      sortDescriptors:(NSArray *)sortDescriptors;
 
+/**
+ * Instantiate and return an NSFetchedResultsController for an entity with the given class
+ *
+ * @param entityClass           The class of the entity to fetch
+ * @param delegate              The delegate of the NSFetchedResultsController
+ * @param predicateFormat       The predicate format to fulfill
+ * @param sortDescriptors       The array of descriptors for the NSFetchedResultsController
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ *
+ * @return an NSFetchedResultsController for the given managedObjectContext
+ */
 +(NSFetchedResultsController *)fetchedResultsControllerForEntityClass:(Class)entityClass
                                                              delegate:(id<NSFetchedResultsControllerDelegate>)delegate
                                                       predicateFormat:(NSString *)predicateFormat
                                                       sortDescriptors:(NSArray *)sortDescriptors;
 
+/**
+ * Instantiate and return an NSFetchedResultsController for an entity with the given name
+ *
+ * @param entityName            The name of the entity to fetch
+ * @param delegate              The delegate of the NSFetchedResultsController
+ * @param predicateFormat       The predicate format to fulfill
+ * @param sortDescriptors       The array of descriptors for the NSFetchedResultsController
+ *
+ * @note    the NSManagedObjectContext used is provided by AppDelegate
+ *
+ * @return an NSFetchedResultsController for the given managedObjectContext
+ */
 +(NSFetchedResultsController *)fetchedResultsControllerForEntityName:(NSString *)entityName
                                                             delegate:(id<NSFetchedResultsControllerDelegate>)delegate
                                                      predicateFormat:(NSString *)predicateFormat

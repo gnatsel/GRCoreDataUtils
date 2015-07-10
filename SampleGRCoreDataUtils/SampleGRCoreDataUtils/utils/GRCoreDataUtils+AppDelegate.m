@@ -142,6 +142,8 @@
     [GRCoreDataUtils setValue:value forKeyPath:keyPath forManagedObjectNamed:NSStringFromClass(entityClass) notInArray:managedObjectArray];
 }
 +(void)setValue:(id)value forKeyPath:(NSString *)keyPath forManagedObjectNamed:(NSString *)entityName notInArray:(NSArray *)managedObjectArray{
+    
+    //Performances must be improved
     NSArray *allManagedObjectArray = [GRCoreDataUtils managedObjectsArrayForEntityName:entityName];
     for(NSManagedObject *managedObject in allManagedObjectArray){
         if(![managedObjectArray containsObject:managedObject]){
