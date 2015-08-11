@@ -262,6 +262,7 @@
  * @param entityClass       The class of the entity to fetch
  * @param delegate          The delegate of the NSFetchedResultsController
  * @param sortDescriptors   The sort descriptors used by the NSFetchedRequest instance of the NSFetchedResultsController
+ * @param sectionNameKeyPath    The sectionNameKeyPath of the NSFetchedResultsController
  *
  * @note    the NSManagedObjectContext used is provided by AppDelegate
  *
@@ -269,7 +270,8 @@
  */
 +(NSFetchedResultsController *)fetchedResultsControllerForEntityClass:(Class)entityClass
                                                              delegate:(id<NSFetchedResultsControllerDelegate>)delegate
-                                                      sortDescriptors:(NSArray *)sortDescriptors;
+                                                      sortDescriptors:(NSArray *)sortDescriptors
+                                                   sectionNameKeyPath:(NSString *)sectionsectionNameKeyPath;
 
 /**
  * Instantiate and return an NSFetchedResultsController for an entity with the given name
@@ -277,6 +279,7 @@
  * @param entityName        The name of the entity to fetch
  * @param delegate          The delegate of the NSFetchedResultsController
  * @param sortDescriptors   The sort descriptors used by the NSFetchedRequest instance of the NSFetchedResultsController
+ * @param sectionNameKeyPath    The sectionNameKeyPath of the NSFetchedResultsController
  *
  * @note    the NSManagedObjectContext used is provided by AppDelegate
  *
@@ -284,7 +287,8 @@
  */
 +(NSFetchedResultsController *)fetchedResultsControllerForEntityName:(NSString *)entityName
                                                             delegate:(id<NSFetchedResultsControllerDelegate>)delegate
-                                                     sortDescriptors:(NSArray *)sortDescriptors;
+                                                     sortDescriptors:(NSArray *)sortDescriptors
+                                                  sectionNameKeyPath:(NSString *)sectionsectionNameKeyPath;
 
 /**
  * Instantiate and return an NSFetchedResultsController for an entity with the given class
@@ -293,6 +297,7 @@
  * @param delegate              The delegate of the NSFetchedResultsController
  * @param predicateFormat       The predicate format to fulfill
  * @param sortDescriptors       The array of descriptors for the NSFetchedResultsController
+ * @param sectionNameKeyPath    The sectionNameKeyPath of the NSFetchedResultsController
  *
  * @note    the NSManagedObjectContext used is provided by AppDelegate
  *
@@ -301,7 +306,8 @@
 +(NSFetchedResultsController *)fetchedResultsControllerForEntityClass:(Class)entityClass
                                                              delegate:(id<NSFetchedResultsControllerDelegate>)delegate
                                                       predicateFormat:(NSString *)predicateFormat
-                                                      sortDescriptors:(NSArray *)sortDescriptors;
+                                                      sortDescriptors:(NSArray *)sortDescriptors
+                                                   sectionNameKeyPath:(NSString *)sectionsectionNameKeyPath;
 
 /**
  * Instantiate and return an NSFetchedResultsController for an entity with the given name
@@ -310,6 +316,7 @@
  * @param delegate              The delegate of the NSFetchedResultsController
  * @param predicateFormat       The predicate format to fulfill
  * @param sortDescriptors       The array of descriptors for the NSFetchedResultsController
+ * @param sectionNameKeyPath    The sectionNameKeyPath of the NSFetchedResultsController
  *
  * @note    the NSManagedObjectContext used is provided by AppDelegate
  *
@@ -318,5 +325,6 @@
 +(NSFetchedResultsController *)fetchedResultsControllerForEntityName:(NSString *)entityName
                                                             delegate:(id<NSFetchedResultsControllerDelegate>)delegate
                                                      predicateFormat:(NSString *)predicateFormat
-                                                     sortDescriptors:(NSArray *)sortDescriptors;
+                                                     sortDescriptors:(NSArray *)sortDescriptors
+                                                  sectionNameKeyPath:(NSString *)sectionsectionNameKeyPath;
 @end

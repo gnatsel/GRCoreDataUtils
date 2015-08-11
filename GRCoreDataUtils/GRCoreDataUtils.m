@@ -257,6 +257,7 @@
                                                             delegate:(id<NSFetchedResultsControllerDelegate>)delegate
                                                      predicateFormat:(NSString *)predicateFormat
                                                      sortDescriptors:(NSArray *)sortDescriptors
+                                                  sectionNameKeyPath:(NSString *)sectionsectionNameKeyPath
                                                 managedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -271,7 +272,7 @@
     NSFetchedResultsController *fetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:managedObjectContext
-                                          sectionNameKeyPath:nil
+                                          sectionNameKeyPath:sectionsectionNameKeyPath
                                                    cacheName:nil];
     fetchedResultsController.delegate = delegate;
     NSError *error;
@@ -294,12 +295,14 @@
                                                             delegate:(id<NSFetchedResultsControllerDelegate>)delegate
                                                      predicateFormat:(NSString *)predicateFormat
                                                      sortDescriptors:(NSArray *)sortDescriptors
+                                                   sectionNameKeyPath:(NSString *)sectionsectionNameKeyPath
                                                 managedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
    return [GRCoreDataUtils fetchedResultsControllerForEntityName:NSStringFromClass(entityClass)
                                                         delegate:delegate
                                                  predicateFormat:predicateFormat
                                                  sortDescriptors:sortDescriptors
+                                              sectionNameKeyPath:sectionsectionNameKeyPath
                                             managedObjectContext:managedObjectContext];
     
 }

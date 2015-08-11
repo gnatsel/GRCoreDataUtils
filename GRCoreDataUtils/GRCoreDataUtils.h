@@ -225,6 +225,7 @@
  * @param delegate              The delegate of the NSFetchedResultsController
  * @param predicateFormat       The predicate format to fulfill
  * @param sortDescriptors       The array of descriptors for the NSFetchedResultsController
+ * @param sectionNameKeyPath    The sectionNameKeyPath of the NSFetchedResultsController
  * @param managedObjectContext  The NSManagedObjectContext where NSManagedObjects are deleted
  *
  * @return an NSFetchedResultsController for the given managedObjectContext
@@ -233,6 +234,7 @@
                                                             delegate:(id<NSFetchedResultsControllerDelegate>)delegate
                                                      predicateFormat:(NSString *)predicateFormat
                                                      sortDescriptors:(NSArray *)sortDescriptors
+                                                  sectionNameKeyPath:(NSString *)sectionsectionNameKeyPath
                                                 managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /**
@@ -242,6 +244,7 @@
  * @param delegate              The delegate of the NSFetchedResultsController
  * @param predicateFormat       The predicate format to fulfill
  * @param sortDescriptors       The array of descriptors for the NSFetchedResultsController
+ * @param sectionNameKeyPath    The sectionNameKeyPath of the NSFetchedResultsController
  * @param managedObjectContext  The NSManagedObjectContext where NSManagedObjects are deleted
  *
  * @return an NSFetchedResultsController for the given managedObjectContext
@@ -250,5 +253,6 @@
                                                              delegate:(id<NSFetchedResultsControllerDelegate>)delegate
                                                       predicateFormat:(NSString *)predicateFormat
                                                       sortDescriptors:(NSArray *)sortDescriptors
+                                                   sectionNameKeyPath:(NSString *)sectionsectionNameKeyPath
                                                  managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 @end

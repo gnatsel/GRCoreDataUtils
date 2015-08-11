@@ -168,19 +168,23 @@
 
 +(NSFetchedResultsController *)fetchedResultsControllerForEntityClass:(Class)entityClass
                                                              delegate:(id<NSFetchedResultsControllerDelegate>)delegate
-                                                      sortDescriptors:(NSArray *)sortDescriptors{
+                                                      sortDescriptors:(NSArray *)sortDescriptors
+                                                   sectionNameKeyPath:(NSString *)sectionsectionNameKeyPath{
     return [self fetchedResultsControllerForEntityClass:entityClass
                                                delegate:delegate
                                         predicateFormat:nil
-                                        sortDescriptors:sortDescriptors];
+                                        sortDescriptors:sortDescriptors
+                                     sectionNameKeyPath:sectionsectionNameKeyPath];
 }
 +(NSFetchedResultsController *)fetchedResultsControllerForEntityName:(NSString *)entityName
                                                             delegate:(id<NSFetchedResultsControllerDelegate>)delegate
-                                                     sortDescriptors:(NSArray *)sortDescriptors{
+                                                     sortDescriptors:(NSArray *)sortDescriptors
+                                                  sectionNameKeyPath:(NSString *)sectionsectionNameKeyPath{
     return [self fetchedResultsControllerForEntityName:entityName
                                               delegate:delegate
                                        predicateFormat:nil
-                                       sortDescriptors:sortDescriptors];
+                                       sortDescriptors:sortDescriptors
+                                    sectionNameKeyPath:sectionsectionNameKeyPath];
 }
 
 
@@ -188,19 +192,27 @@
 +(NSFetchedResultsController *)fetchedResultsControllerForEntityClass:(Class)entityClass
                                                              delegate:(id<NSFetchedResultsControllerDelegate>)delegate
                                                       predicateFormat:(NSString *)predicateFormat
-                                                      sortDescriptors:(NSArray *)sortDescriptors{
+                                                      sortDescriptors:(NSArray *)sortDescriptors
+                                                   sectionNameKeyPath:(NSString *)sectionsectionNameKeyPath{
     return [GRCoreDataUtils fetchedResultsControllerForEntityName:NSStringFromClass(entityClass)
                                                          delegate:delegate
                                                   predicateFormat:predicateFormat
-                                                  sortDescriptors:(NSArray *)sortDescriptors];
+                                                  sortDescriptors:sortDescriptors
+                                               sectionNameKeyPath:sectionsectionNameKeyPath];
 }
 +(NSFetchedResultsController *)fetchedResultsControllerForEntityName:(NSString *)entityName
                                                             delegate:(id<NSFetchedResultsControllerDelegate>)delegate
                                                      predicateFormat:(NSString *)predicateFormat
                                                      sortDescriptors:(NSArray *)sortDescriptors
+                                                  sectionNameKeyPath:(NSString *)sectionsectionNameKeyPath
 {
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-    return [GRCoreDataUtils fetchedResultsControllerForEntityName:entityName delegate:delegate predicateFormat:predicateFormat sortDescriptors:sortDescriptors managedObjectContext:appDelegate.managedObjectContext];
+    return [GRCoreDataUtils fetchedResultsControllerForEntityName:entityName
+                                                         delegate:delegate
+                                                  predicateFormat:predicateFormat
+                                                  sortDescriptors:sortDescriptors
+                                               sectionNameKeyPath:sectionsectionNameKeyPath
+                                             managedObjectContext:appDelegate.managedObjectContext];
     
 }
 
